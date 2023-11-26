@@ -9,7 +9,8 @@ namespace RedisStorage.Core.Abstractions
 {
     public interface IRedisService
     {
-        Task<List<Meter>> GetMeterAsync();
+        Task<List<Meter>> GetMetersAsync();
         Task UpdateMeterAsync(Meter meter);
+        Task SeedData(int length);
     }
 }

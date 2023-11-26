@@ -22,7 +22,7 @@ namespace RedisStorage.Api.Controllers
         {
             try
             {
-                return Ok(await _redisService.GetMeterAsync());
+                return Ok(await _redisService.GetMetersAsync());
             }
             catch (Exception ex)
             {
@@ -36,6 +36,20 @@ namespace RedisStorage.Api.Controllers
             try
             {
                 await _redisService.UpdateMeterAsync(meter);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(int length)
+        {
+            try
+            {
+                await _redisService.SeedData(length);
                 return NoContent();
             }
             catch (Exception ex)
